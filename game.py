@@ -12,8 +12,12 @@ num = randint(1,100)
 tries = 0
 
 while True:
-   
-    guess = int(input("Your guess? ")) 
+    try:
+        guess = int(input("Your guess? ")) 
+    except ValueError: 
+        print ("That wasn't a valid number. Try again")
+        continue
+        
     # check for valid input
     if guess < 1 or guess > 100:
         print("You have committed a crime. Please enter a number between 1 and 100")
