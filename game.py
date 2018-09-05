@@ -14,7 +14,6 @@ tries = 0
 while True:
     tries += 1
     guess = int(input("Your guess? ")) 
-    # print(num)
     if num == guess:
         break
     elif num > guess:
