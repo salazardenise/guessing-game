@@ -1,19 +1,7 @@
 """A number-guessing game."""
 from random import randint
 
-# Put your code here
-print ("Howdy, what's your name?")
-name = input ("(type in your name) ")
-playAgain = 'yes'
-bestScore = None
-try:
-    maxTries = int(input("What\'s the maximum number of guesses you need per round? "))
-except ValueError:
-    print("That wasn't a valid number.  You get 20 tries.")
-    maxTries=20
-
-
-while playAgain == 'yes':
+def playGame(maxTries):
     print ("{}, I'm thinking of a number between 1 and 100.".format(name))
     print ("Try to guess my number.")
 
@@ -42,11 +30,39 @@ while playAgain == 'yes':
 
     if tries >= maxTries:
         print("Too many tries.  The number was {}.   :-( ".format(num))
+        return None
     else:
         print("Well done, {}! You found my number in {} tries!".format(name, tries))
-        if bestScore is None or tries < bestScore:
-            bestScore = tries
-        # print ("bestScore so far is {}".format(bestScore))
+        return tries
+
+
+
+
+
+
+# Put your code here
+print ("Howdy, what's your name?")
+name = input ("(type in your name) ")
+playAgain = 'yes'
+bestScore = None
+try:
+    maxTries = int(input("What\'s the maximum number of guesses you need per round? "))
+except ValueError:
+    print("That wasn't a valid number.  You get 20 tries.")
+    maxTries=20
+
+if maxTries < 1:
+    print("Need a positive number.  You get 20 tries.")
+    maxTries=20
+    
+
+
+while playAgain == 'yes':
+    score = playGame(maxTries)
+    if score is not None:
+        if bestScore is None or score < bestScore:
+            bestScore = score
+            # print ("bestScore so far is {}".format(bestScore))
 
     playAgain = input("Would you like to play again? (enter Yes to play again):  ")
     playAgain = playAgain.lower()
