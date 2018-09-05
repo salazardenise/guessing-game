@@ -12,6 +12,7 @@ except ValueError:
     print("That wasn't a valid number.  You get 20 tries.")
     maxTries=20
 
+
 while playAgain == 'yes':
     print ("{}, I'm thinking of a number between 1 and 100.".format(name))
     print ("Try to guess my number.")
@@ -19,7 +20,7 @@ while playAgain == 'yes':
     num = randint(1,100)
     tries = 0
 
-    while True and tries < maxTries:
+    while tries < maxTries:
         try:
             guess = int(input("Your guess? ")) 
         except ValueError: 
@@ -37,12 +38,12 @@ while playAgain == 'yes':
         elif num > guess:
             print("Your guess is too low, try again.")
         else:
-            print ("Your guess in too high, try again.")
+            print("Your guess in too high, try again.")
 
     if tries >= maxTries:
         print("Too many tries.  The number was {}.   :-( ".format(num))
     else:
-        print ("Well done, {}! You found my number in {} tries!".format(name, tries))
+        print("Well done, {}! You found my number in {} tries!".format(name, tries))
         if bestScore is None or tries < bestScore:
             bestScore = tries
         # print ("bestScore so far is {}".format(bestScore))
